@@ -1,6 +1,6 @@
 resource "null_resource" "create_kubernetes_toolchain" {
   provisioner "local-exec" {
-    command = "${path.cwd}/scripts/create-toolchain.sh"
+    command = "${path.cwd}/.terraform/modules/ibm-kubernetes-toolchain/scripts/create-toolchain.sh"
 
     environment={
       REGION     =  var.region
