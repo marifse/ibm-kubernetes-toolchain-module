@@ -26,7 +26,6 @@ PARAMETERS="region_id=$TOOLCHAIN_REGION&resourceGroupId=$RESOURCE_GROUP_ID&autoc
 #echo $PARAMETERS
 
 curl -v -X POST \
-  --write-out '%{http_code} %{location}' \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json' \
   -H "Authorization: $BEARER_TOKEN" \
