@@ -29,6 +29,6 @@ curl -i -o output.json -X POST \
 
 cat output.json
 LOCATION=$(grep Location output.json | awk {'print $2'})
-echo "The toolchain is here: $LOCATION"
+echo "View the toolchain at: $LOCATION"
 
 exit 0;
