@@ -21,14 +21,14 @@ RESOURCE_GROUP_ID=$(ibmcloud resource group $RESOURCE_GROUP --output JSON | jq "
 PARAMETERS="region_id=$TOOLCHAIN_REGION&resourceGroupId=$RESOURCE_GROUP_ID&autocreate=true&repository=$TOOLCHAIN_TEMPLATE_REPO&sourceZipUrl=$APPLICATION_REPO&app_repo=$APPLICATION_REPO&apiKey=$API_KEY&registryRegion=$REGION&registryNamespace=$CONTAINER_REGISTRY_NAMESPACE&prodRegion=$REGION&prodResourceGroup=$RESOURCE_GROUP&prodClusterName=$CLUSTER_NAME&prodClusterNamespace=$CONTAINER_REGISTRY_NAMESPACE&toolchainName=$TOOLCHAIN_NAME"
 #echo $PARAMETERS
 
-curl -i -o output.json -X POST \
+RESPONSE=$(curl -i -X POST \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Accept: application/json' \
   -H "Authorization: $BEARER_TOKEN" \
-  "https://cloud.ibm.com/devops/setup/deploy?env_id=$TOOLCHAIN_REGION&$PARAMETERS"
+  "https://cloud.ibm.com/devops/setup/deploy?env_id=$TOOLCHAIN_REGION&$PARAMETERS")
 
-cat output.json
-LOCATION=$(grep Location output.json | awk {'print $2'})
+echo "$RESPONSE"
+LOCATION=$(grep Location <<<"$RESPONSE" | awk {'print $2'})
 echo "View the toolchain at: $LOCATION"
 
 exit 0;
