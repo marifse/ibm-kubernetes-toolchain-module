@@ -28,7 +28,7 @@ RESPONSE=$(curl -i -X POST \
   "https://cloud.ibm.com/devops/setup/deploy?env_id=$TOOLCHAIN_REGION&$PARAMETERS")
 
 echo "$RESPONSE"
-LOCATION=$(grep Location <<<"$RESPONSE" | awk {'print $2'})
+LOCATION=$(grep location <<<"$RESPONSE" | awk {'print $2'})
 echo "View the toolchain at: $LOCATION"
 
 exit 0;
