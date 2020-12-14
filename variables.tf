@@ -23,7 +23,7 @@ variable "toolchain_name" {
 variable "application_repo" {
   type        = string
   description = "Open Toolchain Template URL"
-  default     = "https://github.com/triceam/nodejs-express-app"
+  default     = "https://github.com/IBM-Cloud/Scalable-web-app-node"
 }
 
 variable "resource_group" {
@@ -44,4 +44,10 @@ variable "cluster_namespace" {
 variable "container_registry_namespace" {
   type        = string
   description = "IBM Container Registry namespace to save image into"
+}
+
+variable "pipeline_type" {
+  type        = string
+  description = "Type of IBM DevOps toolchain pipeline"
+  default     = "classic"
 }
