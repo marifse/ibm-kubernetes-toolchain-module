@@ -51,3 +51,9 @@ variable "pipeline_type" {
   description = "Type of IBM DevOps toolchain pipeline"
   default     = "classic"
 }
+
+variable "branch" {
+  type        = string
+  description = "Branch for toolchain template repo"
+  default     = "master"
+}
